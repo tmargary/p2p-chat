@@ -2,14 +2,14 @@
 
 ### Goals of the project
 
-This is a peer to peer console chat application. The clients are able to connect to the server and 
-obtain the list of available clients. Afterwards, the client can connect to one other client on the list and 
-exchange text messages directly to one another.
+This is a peer to peer console chat application. The clients are able to connect to the server via TCP socket
+connections and  obtain the list of available clients. Afterwards, the client can connect to one other client 
+on the list and exchange text messages directly to one another.
 
 ### Installation
 - run `pip install .` from the root of the project
 - Run `p2p_demo run server`
-- From a different terminal, run `p2p_demo run client`
+- Run `p2p_demo run client` (from a different terminal)
 - _(Optional)_ Continue adding as many clients as you need by running the command above.
 - Follow the prompts.
 - _(Optional)_ To get help about `p2p_demo`, run `p2p_demo --help`
