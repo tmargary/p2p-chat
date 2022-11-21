@@ -6,7 +6,7 @@ This is a peer to peer console chat application. The clients are able to connect
 obtain the list of available clients. Afterwards, the client can connect to one other client on the list and 
 exchange text messages directly to one another.
 
-### How to use the program?
+### Installation
 - run `pip install .` from the root of the project
 - Run `p2p_demo run server`
 - From a different terminal, run `p2p_demo run client`
@@ -20,5 +20,5 @@ exchange text messages directly to one another.
 - Implement a GUI
 - Connect users outside the localhost via the Internet
 
-### Demo
+### Demo screenshot
 ![ScreenShot](./screenshots/ss_0.png)
