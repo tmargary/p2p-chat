@@ -1,7 +1,4 @@
-import socket
 import threading
-
-from p2p_chat import spec
 
 # Dictionary for Clients, Their usernames, and their chat Partner/Receiver
 clients = dict()
@@ -36,7 +33,6 @@ def list_clients(message, client):
             client.send(f"[SERVER] Nobody is online.".encode('ascii'))
 
 
-# Handling Messages From Clients
 def handle(username):
     """
     Handles the requests from the client

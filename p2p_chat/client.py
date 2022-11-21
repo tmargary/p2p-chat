@@ -1,7 +1,4 @@
-import socket
 import threading
-
-from p2p_chat import spec
 
 
 def receive(client, sender):

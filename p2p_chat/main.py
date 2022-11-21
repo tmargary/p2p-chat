@@ -1,14 +1,13 @@
 import argparse
 import socket
 
-from p2p_chat import server, client, spec
+from p2p_chat import server, client, spec, util
 
 parser = argparse.ArgumentParser()
-subparser = parser.add_subparsers(dest="func_name")
+subparser = parser.add_subparsers(dest="sub_func")
 
-parser_a = subparser.add_parser("run")
-parser_a.add_argument("module", help="The name of the repo.", choices=['server', 'client'])
-# parser_a.add_argument("-c", "--case_name", help="The name of the case.")
+parser_run = subparser.add_parser("run")
+parser_run.add_argument("module", help="Name of the module.", choices=['server', 'client'])
 
 ARGS = parser.parse_known_args()[0]
 KWARGS = vars(ARGS)
@@ -27,14 +26,7 @@ def main():
         server.receive(s)
     elif module == "client":
         # Prints usage on the terminal
-        print('\n')
-        print("##########################################################################")
-        print("\t[USAGE]")
-        print("\t/list: \t\t\t Lists available users")
-        print("\t/connect [username]: \t Connects to the selected username")
-        print("\t/exit: \t\t\t Disconnects the user")
-        print("##########################################################################")
-        print('\n')
+        util.print_usage()
 
         # Starting Server
         print("[START] Registering Client...")
