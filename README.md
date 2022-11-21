@@ -13,7 +13,7 @@ messages directly to one another.
 - Follow the prompts.
 
 ### To be improved
-- Better client to client messaging process
+- Exchange messages without the help of the server
 - To improve the UI
 - To implement a GUI
 - To connect users outside the localhost

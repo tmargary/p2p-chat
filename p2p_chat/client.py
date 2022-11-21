@@ -1,9 +1,10 @@
 import socket
 import threading
-import spec
+
+from p2p_chat import spec
 
 
-def receive():
+def receive(client, sender):
     """
     Listens to the server and sends username or prints the message
     """
@@ -21,7 +22,7 @@ def receive():
             break
 
 
-def write():
+def write(client, sender):
     """
     Sends messages to server
     """
@@ -30,28 +31,13 @@ def write():
         client.send(message.encode('ascii'))
 
 
-if __name__ == '__main__':
-    # Prints usage on the terminal
-    print("##########################################################")
-    print("[USAGE]")
-    print("/list: \t\t\t Lists available users")
-    print("/connect [username]: \t Connects to the selected username")
-    print("/exit: \t\t\t Disconnects the user")
-    print("##########################################################")
-    print('\n')
-
-    # Choosing username
-    sender = input("[PROMPT] Choose your username: ")
-
-    # Connecting to Server
-    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client.connect(spec.ADDRESS)
+def run_client(c, username):
 
     # Starting thread for listening
-    receive_thread = threading.Thread(target=receive)
+    receive_thread = threading.Thread(target=receive, args=(c, username))
     receive_thread.start()
 
     # Starting thread for writing
-    write_thread = threading.Thread(target=write)
+    write_thread = threading.Thread(target=write, args=(c, username))
     write_thread.start()
 

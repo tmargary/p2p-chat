@@ -1,7 +1,10 @@
 import socket
 import threading
-import spec
 
+from p2p_chat import spec
+
+# Dictionary for Clients, Their usernames, and their chat Partner/Receiver
+clients = dict()
 
 def send(message):
     """
@@ -64,7 +67,7 @@ def handle(username):
             break
 
 
-def receive():
+def receive(server):
     """
     Main function that receives the requests and sends them to the handle thread
     """
@@ -86,15 +89,3 @@ def receive():
         # Start Handling Thread For Client
         thread = threading.Thread(target=handle, args=(username,))
         thread.start()
-
-
-if __name__ == '__main__':
-    # Starting Server
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server.bind(spec.ADDRESS)
-    server.listen()
-    print("[START] Server is listening...")
-    # Dictionary for Clients, Their usernames, and their chat Partner/Receiver
-    clients = dict()
-    receive()
